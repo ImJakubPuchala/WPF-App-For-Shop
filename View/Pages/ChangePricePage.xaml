@@ -1,0 +1,32 @@
+﻿<Page x:Class="WPF_App_For_Shop.View.Pages.ChangePricePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_App_For_Shop.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ChangePricePage">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" VerticalAlignment="Top">
+            <Label Content="EAN" Foreground="White" Margin="5"/>
+            <Label Content="New Price" Foreground="White" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Top">
+            <TextBox x:Name="EANTextBox" Height="20" Margin="5" 
+                    Text="{Binding ProductNewPrice.EAN, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="NewPriceTextBox" Height="20" Margin="5" 
+                    Text="{Binding ProductNewPrice.NewPrice, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+        <Button Content="Change Price" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Bottom" 
+                Click="ChangePriceButton_Click"/>
+    </Grid>
+</Page>
