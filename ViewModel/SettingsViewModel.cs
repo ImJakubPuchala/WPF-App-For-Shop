@@ -45,7 +45,7 @@ public class SettingsViewModel : INotifyPropertyChanged
         {
             if (availablePorts == null)
             {
-                availablePorts = new SerialPortModel().GetAllSerialPorts();
+                availablePorts = SerialPortModel.Instance.GetAllSerialPorts();
             }
             return availablePorts;
         }

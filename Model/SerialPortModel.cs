@@ -6,17 +6,28 @@ namespace WPF_App_For_Shop.Model;
 
 public class SerialPortModel
 {
+    private static SerialPortModel _instance;
     private SerialPort serialPort;
     public event Action<string> DataReceived;
 
-    public SerialPortModel(string portName)
+    private SerialPortModel(string portName)
     {
         InitializeSerialPort(portName);
     }
 
-    public SerialPortModel() { }
+    public static SerialPortModel Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new SerialPortModel("COM1");
+            }
+            return _instance;
+        }
+    }
 
-    private void InitializeSerialPort(string portName)
+    public void InitializeSerialPort(string portName)
     {
         serialPort = new SerialPort(portName)
         {

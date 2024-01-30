@@ -16,17 +16,17 @@ namespace WPF_App_For_Shop
             InitializeComponent();
 
             string serialPort = new SettingsViewModel().SelectedPort;
-            if(serialPort != null)
+            if (serialPort != null)
             {
-                SerialPortModel serialPortModel = new SerialPortModel(serialPort);
-
+                var serialPortModel = SerialPortModel.Instance;
+                serialPortModel.InitializeSerialPort(serialPort);
                 serialPortModel.Open();
             }
             else
             {
                 MessageBox.Show("Please select port in settings, then restart the application!");
             }
-            
+
         }
 
         private void MenuItem_ViewItems_Click(object sender, RoutedEventArgs e)
