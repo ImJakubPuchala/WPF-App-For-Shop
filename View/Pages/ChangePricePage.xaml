@@ -20,13 +20,10 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Top">
-            <TextBox x:Name="EANTextBox" Height="20" Margin="5" 
-                    Text="{Binding ProductNewPrice.EAN, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox x:Name="NewPriceTextBox" Height="20" Margin="5" 
-                    Text="{Binding ProductNewPrice.NewPrice, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Height="20" Margin="5" Text="{Binding EAN, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Height="20" Margin="5" Text="{Binding NewPrice, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
-        <Button Content="Change Price" Grid.ColumnSpan="2" Margin="5" VerticalAlignment="Bottom" 
-                Click="ChangePriceButton_Click"/>
+        <Button Content="Change Price" Grid.ColumnSpan="2" Margin="5" Command="{Binding ChangePriceCommand}" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>
