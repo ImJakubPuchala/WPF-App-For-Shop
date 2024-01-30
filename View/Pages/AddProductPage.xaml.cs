@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using WPF_App_For_Shop.Model;
 using WPF_App_For_Shop.ViewModel;
 
 namespace WPF_App_For_Shop.View.Pages;

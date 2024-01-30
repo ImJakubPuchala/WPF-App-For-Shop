@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Windows;
+using WPF_App_For_Shop.Model;
 using WPF_App_For_Shop.View;
 using WPF_App_For_Shop.View.Pages;
 
@@ -13,6 +14,19 @@ namespace WPF_App_For_Shop
         public MainWindow()
         {
             InitializeComponent();
+
+            string serialPort = new SettingsViewModel().SelectedPort;
+            if(serialPort != null)
+            {
+                SerialPortModel serialPortModel = new SerialPortModel(serialPort);
+
+                serialPortModel.Open();
+            }
+            else
+            {
+                MessageBox.Show("Please select port in settings, then restart the application!");
+            }
+            
         }
 
         private void MenuItem_ViewItems_Click(object sender, RoutedEventArgs e)

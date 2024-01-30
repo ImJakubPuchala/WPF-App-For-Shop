@@ -12,6 +12,8 @@ public class AddProductViewModel : INotifyPropertyChanged
     private double _price;
     private string _ean;
     private ApiService _apiService;
+    public ICommand AddProductCommand { get; }
+    public event PropertyChangedEventHandler PropertyChanged;
 
     public string Name
     {
@@ -43,8 +45,6 @@ public class AddProductViewModel : INotifyPropertyChanged
         }
     }
 
-    public ICommand AddProductCommand { get; }
-
     public AddProductViewModel()
     {
         _apiService = new ApiService();
@@ -70,7 +70,6 @@ public class AddProductViewModel : INotifyPropertyChanged
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
     protected virtual void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -16,12 +16,18 @@
 
         <StackPanel Grid.Column="0" VerticalAlignment="Top">
             <Label Content="IP" Foreground="White" Margin="5"/>
+            <Label Content="SCANNER" Foreground="White" Margin="5"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" VerticalAlignment="Top">
             <TextBox Height="20" Margin="5" Text="{Binding PrinterIpAddress, UpdateSourceTrigger=PropertyChanged}"/>
+            <ComboBox Height="20" Margin="5" x:Name="PortComboBox"
+                  HorizontalAlignment="Center" VerticalAlignment="Top"
+                  Width="700"
+                  ItemsSource="{Binding AvailablePorts}"
+                  SelectedItem="{Binding SelectedPort}"/>
         </StackPanel>
 
-        <Button Content="Save" Grid.ColumnSpan="2" Margin="5" Command="{Binding SavePrinterIpAddress}" VerticalAlignment="Bottom"/>
+        <Button Content="Save" Grid.ColumnSpan="2" Margin="5" Command="{Binding SaveSettingsCommand}" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>
