@@ -17,7 +17,10 @@ public class PrinterService
         string printerIp = _settingsViewModel.PrinterIpAddress;
         int printerPort = 9100;
         string zplData = GenerateZpl(product);
-        SendDataToPrinter(printerIp, printerPort, zplData);
+
+        //Using a thread to be able to continue to operate on the application regardless of whether the printer works or not
+        Thread thread = new Thread(() => SendDataToPrinter(printerIp, printerPort, zplData));
+        thread.Start();
     }
 
     private string GenerateZpl(ProductInformation product)
@@ -25,11 +28,12 @@ public class PrinterService
         return $"""
             ^XA
 
-             ^FO20,50^ADN,36,20^FD{product.Name}^FS
-             ^BY2,1,60
-             ^FO20,100^BC^FD{product.EAN}^FS
+                ^FO20,50^ADN,36,20^FD{product.Name}^FS
+                ^FO20,100^ADN,36,20^FD{product.Price} PLN^FS
+                ^BY2,1,60
+                ^FO20,150^BC^FD{product.EAN}^FS
 
-             ^XZ
+            ^XZ
          """;
     }
 

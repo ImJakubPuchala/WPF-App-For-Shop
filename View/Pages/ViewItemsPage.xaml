@@ -15,9 +15,9 @@
             <DataGrid x:Name="dataGrid" ItemsSource="{Binding Products}" AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
-                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Cena" Binding="{Binding Price}" />
-                    <DataGridTextColumn Header="EAN" Binding="{Binding EAN}" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+                    <DataGridTextColumn Header="EAN Code" Binding="{Binding EAN}" />
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
