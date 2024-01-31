@@ -53,8 +53,6 @@ public class AddProductViewModel : INotifyPropertyChanged
         }
     }
 
-    
-
     public AddProductViewModel()
     {
         _apiService = new ApiService();
