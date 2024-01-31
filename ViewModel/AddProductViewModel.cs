@@ -20,8 +20,11 @@ public class AddProductViewModel : INotifyPropertyChanged
         get => _ean;
         set
         {
-            _ean = value;
-            OnPropertyChanged(nameof(EAN));
+            if (_ean != value)
+            {
+                _ean = value;
+                OnPropertyChanged(nameof(EAN));
+            }
         }
     }
     public string Name
@@ -29,8 +32,11 @@ public class AddProductViewModel : INotifyPropertyChanged
         get => _name;
         set
         {
-            _name = value;
-            OnPropertyChanged(nameof(Name));
+            if(_name != value)
+            {
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
         }
     }
 
@@ -39,8 +45,11 @@ public class AddProductViewModel : INotifyPropertyChanged
         get => _price;
         set
         {
-            _price = value;
-            OnPropertyChanged(nameof(Price));
+            if (_price != value)
+            {
+                _price = value;
+                OnPropertyChanged(nameof(Price));
+            }
         }
     }
 
