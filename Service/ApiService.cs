@@ -86,4 +86,10 @@ public class ApiService
             throw new ApplicationException($"Error changing price: {ex.Message}", ex);
         }
     }
+
+    public ProductStatistics GetProductStatisticsByEAN(string EAN)
+    {
+        //TODO: Implement
+        throw new NotImplementedException();
+    }
 }

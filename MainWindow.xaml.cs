@@ -47,5 +47,9 @@ namespace WPF_App_For_Shop
         {
             MainContentFrame.Navigate(new SettingsPage());
         }
+        private void MenuItem_ProductStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Navigate(new ProductStatisticsPage());
+        }
     }
 }
