@@ -87,9 +87,26 @@ public class ApiService
         }
     }
 
-    public ProductStatistics GetProductStatisticsByEAN(string EAN)
+    public async Task<IEnumerable<ProductStatistics>> GetProductStatisticsByEANAsync(string EAN)
     {
-        //TODO: Implement
-        throw new NotImplementedException();
+        string apiUrl = $"https://localhost:7204/ProductStatistics/{EAN}";
+        try
+        {
+            var response = await _client.GetAsync(apiUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var products = JsonConvert.DeserializeObject<IEnumerable<ProductStatistics>>(content);
+                return products;
+            }
+            else
+            {
+                return Enumerable.Empty<ProductStatistics>();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException($"Error fetching data from API: {ex.Message}", ex);
+        }
     }
 }

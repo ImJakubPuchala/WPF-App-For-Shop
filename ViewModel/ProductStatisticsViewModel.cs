@@ -82,7 +82,7 @@ public class ProductStatisticsViewModel : INotifyPropertyChanged
     {
         try
         {
-            var product = _apiService.GetProductStatisticsByEAN(EAN);
+            var product = _apiService.GetProductStatisticsByEANAsync(EAN);
             ProductName = product.Name;
             TotalSales = product.TotalSales;
             AverageRating = product.AverageRating;
