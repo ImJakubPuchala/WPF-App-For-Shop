@@ -87,7 +87,7 @@ public class ApiService
         }
     }
 
-    public async Task<IEnumerable<ProductStatistics>> GetProductStatisticsByEANAsync(string EAN)
+    public async Task<ProductStatistics> GetProductStatisticsByEANAsync(string EAN)
     {
         string apiUrl = $"https://localhost:7204/ProductStatistics/{EAN}";
         try
@@ -96,12 +96,12 @@ public class ApiService
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var products = JsonConvert.DeserializeObject<IEnumerable<ProductStatistics>>(content);
-                return products;
+                var product = JsonConvert.DeserializeObject<ProductStatistics>(content);
+                return product;
             }
             else
             {
-                return Enumerable.Empty<ProductStatistics>();
+                return null;
             }
         }
         catch (Exception ex)
@@ -109,4 +109,30 @@ public class ApiService
             throw new ApplicationException($"Error fetching data from API: {ex.Message}", ex);
         }
     }
+
+    public async Task AddProductToWarehouseAsync(Warehouse warehouseDto)
+    {
+        try
+        {
+            string apiUrl = "https://localhost:7204/Warehouse/AddWarehouseItem";
+            var json = JsonConvert.SerializeObject(warehouseDto);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync(apiUrl, content);
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Product added to warehouse successfully");
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                throw new ApplicationException($"Error adding product to warehouse: {errorContent}");
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException($"Error adding product to warehouse: {ex.Message}", ex);
+        } 
+    }
+
 }

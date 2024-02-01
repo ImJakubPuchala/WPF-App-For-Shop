@@ -78,11 +78,11 @@ public class ProductStatisticsViewModel : INotifyPropertyChanged
         EAN = data;
     }
 
-    public void FindProduct()
+    public async void FindProduct()
     {
         try
         {
-            var product = _apiService.GetProductStatisticsByEANAsync(EAN);
+            var product = await _apiService.GetProductStatisticsByEANAsync(EAN);
             ProductName = product.Name;
             TotalSales = product.TotalSales;
             AverageRating = product.AverageRating;

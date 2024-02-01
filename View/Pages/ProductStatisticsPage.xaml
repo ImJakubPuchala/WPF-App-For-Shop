@@ -24,8 +24,8 @@
         <StackPanel Grid.Column="1" VerticalAlignment="Top">
             <TextBox Text="{Binding EAN}" Margin="5"/>
             <Button Content="Find Product" Grid.ColumnSpan="2" Margin="5" Command="{Binding FindProductCommand}" VerticalAlignment="Bottom"/>
-            <TextBox Text="{Binding TotalSales}" Margin="5"/>
-            <TextBox Text="{Binding AverageRating}" Margin="5"/>
+            <TextBox Text="{Binding TotalSales}" Margin="5" IsReadOnly="True"/>
+            <TextBox Text="{Binding AverageRating}" Margin="5" IsReadOnly="True"/>
         </StackPanel>
     </Grid>
 </Page>
