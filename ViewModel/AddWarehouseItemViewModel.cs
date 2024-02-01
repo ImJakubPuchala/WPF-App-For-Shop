@@ -16,7 +16,7 @@ public class AddWarehouseItemViewModel : INotifyPropertyChanged
     private ApiService _apiService;
     private string _ean;
     private int _quantity;
-    private string _warehouseName;
+    private string _warehouseNumber;
     public ICommand AddProductCommand { get; }
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -46,15 +46,15 @@ public class AddWarehouseItemViewModel : INotifyPropertyChanged
         }
     }
 
-    public string WarehouseName
+    public string WarehouseNumber
     {
-        get => _warehouseName;
+        get => _warehouseNumber;
         set
         {
-            if (_warehouseName != value)
+            if (_warehouseNumber != value)
             {
-                _warehouseName = value;
-                OnPropertyChanged(nameof(WarehouseName));
+                _warehouseNumber = value;
+                OnPropertyChanged(nameof(WarehouseNumber));
             }
         }
     }
@@ -76,8 +76,13 @@ public class AddWarehouseItemViewModel : INotifyPropertyChanged
     {
         try
         {
-            //ToDo: Add product to warehouse
-            throw new NotImplementedException();
+            var warehouse = new Warehouse
+            {
+                EANCode = EAN,
+                Quantity = Quantity,
+                WarehouseNumber = WarehouseNumber
+            };
+            await _apiService.AddProductToWarehouseAsync(warehouse);
         }
         catch (Exception ex)
         {
