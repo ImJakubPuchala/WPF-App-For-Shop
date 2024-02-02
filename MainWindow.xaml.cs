@@ -51,6 +51,10 @@ namespace WPF_App_For_Shop
         {
             MainContentFrame.Navigate(new AddWarehouseItemPage());
         }
+        private void MenuItem_Warehouse_Click(object sender, RoutedEventArgs e)
+        {
+            MainContentFrame.Navigate(new WarehousePage());
+        }
         private void MenuItem_ProductStatistics_Click(object sender, RoutedEventArgs e)
         {
             MainContentFrame.Navigate(new ProductStatisticsPage());

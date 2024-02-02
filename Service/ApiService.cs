@@ -134,5 +134,26 @@ public class ApiService
             throw new ApplicationException($"Error adding product to warehouse: {ex.Message}", ex);
         } 
     }
-
+    public async Task<IEnumerable<WarehouseProduct>> GetAllWarehouseProductsAsync()
+    {
+        string apiUrl = $"https://localhost:7204/Warehouse/GetAllWarehouseItems";
+        try
+        {
+            var response = await _client.GetAsync(apiUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var products = JsonConvert.DeserializeObject<IEnumerable<WarehouseProduct>>(content);
+                return products;
+            }
+            else
+            {
+                return Enumerable.Empty<WarehouseProduct>();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException($"Error fetching data from API: {ex.Message}", ex);
+        }
+    }
 }

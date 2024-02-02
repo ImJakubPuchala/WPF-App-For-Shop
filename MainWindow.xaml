@@ -45,7 +45,8 @@
             <MenuItem Header="Add Product" Click="MenuItem_AddProduct_Click"/>
             <MenuItem Header="Change Product Price" Click="MenuItem_ChangePrice_Click"/>
             <MenuItem Header="Product Statistics" Click="MenuItem_ProductStatistics_Click"/>
-            <MenuItem Header="Product WH" Click="MenuItem_AddWarehouseItem_Click"/>
+            <MenuItem Header="Add To WH" Click="MenuItem_AddWarehouseItem_Click"/>
+            <MenuItem Header="Warehouse" Click="MenuItem_Warehouse_Click"/>
             <MenuItem Header="Settings" Click="MenuItem_Settings_Click"/>
         </Menu>
         <Frame x:Name="MainContentFrame" NavigationUIVisibility="Hidden"/>
