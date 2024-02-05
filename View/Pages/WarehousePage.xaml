@@ -10,7 +10,8 @@
 
     <Grid>
         <StackPanel>
-            <Button Content="Print" Click="PrintLabelButton_Click" Margin="10"/>
+            <Button Content="Print" Click="PrintLabelButton_Click" Margin="5"/>
+            <Button Content="Zmień lokalizację" Click="ChangeLocationButton_Click" Margin="5"/>
             <DataGrid x:Name="dataGrid" ItemsSource="{Binding Products}" AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Warehouse Item ID" Binding="{Binding WarehouseItemId}" />

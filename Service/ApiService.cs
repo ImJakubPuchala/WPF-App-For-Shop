@@ -156,4 +156,27 @@ public class ApiService
             throw new ApplicationException($"Error fetching data from API: {ex.Message}", ex);
         }
     }
+    public async Task<bool> UpdateWarehouseNumberAsync(int warehouseId, string newWarehouseNumber)
+    {
+        var apiUrl = $"https://localhost:7204/Warehouse/UpdateWarehouseNumber/{warehouseId}";
+        try
+        {
+            var updateObject = new
+            {
+                WarehouseId = warehouseId,
+                NewWarehouseNumber = newWarehouseNumber
+            };
+
+            var json = JsonConvert.SerializeObject(updateObject);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await _client.PutAsync(apiUrl, content);
+
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception ex)
+        {
+            throw new ApplicationException($"Error sending data to API: {ex.Message}", ex);
+        }
+    }
 }

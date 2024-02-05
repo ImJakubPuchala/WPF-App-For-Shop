@@ -24,6 +24,7 @@ public class WarehouseViewModel
 
     private async void LoadProducts()
     {
+        Products.Clear();
         var products = await ProductApi.GetAllWarehouseProductsAsync();
         foreach (var product in products)
         {
@@ -41,4 +42,19 @@ public class WarehouseViewModel
             MessageBox.Show("Wybierz produkt z listy.");
         }
     }
+
+    public async void UpdateWarehouseNumber(WarehouseProduct product, string newWarehouseNumber)
+    {
+        product.WarehouseNumber = newWarehouseNumber;
+        if(await ProductApi.UpdateWarehouseNumberAsync(product.WarehouseItemId, newWarehouseNumber))
+        {
+            MessageBox.Show("Zaktualizowano numer magazynu.");
+        }
+        else
+        {
+            MessageBox.Show("Wystąpił błąd podczas aktualizacji numeru magazynu.");
+        }
+        LoadProducts();
+    }
+
 }
