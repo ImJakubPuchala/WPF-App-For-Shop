@@ -14,10 +14,8 @@
             <Button Content="Zmień lokalizację" Click="ChangeLocationButton_Click" Margin="5"/>
             <DataGrid x:Name="dataGrid" ItemsSource="{Binding Products}" AutoGenerateColumns="False" IsReadOnly="True" VerticalAlignment="Stretch">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Warehouse Item ID" Binding="{Binding WarehouseItemId}" />
-                    <DataGridTextColumn Header="Product ID" Binding="{Binding ProductId}" />
-                    <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" />
                     <DataGridTextColumn Header="EAN Code" Binding="{Binding EANCode}" />
+                    <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" />
                     <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
                     <DataGridTextColumn Header="Warehouse Number" Binding="{Binding WarehouseNumber}" />
                 </DataGrid.Columns>

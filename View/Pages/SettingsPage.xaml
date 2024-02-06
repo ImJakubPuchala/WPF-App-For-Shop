@@ -22,8 +22,7 @@
         <StackPanel Grid.Column="1" VerticalAlignment="Top">
             <TextBox Height="20" Margin="5" Text="{Binding PrinterIpAddress, UpdateSourceTrigger=PropertyChanged}"/>
             <ComboBox Height="20" Margin="5" x:Name="PortComboBox"
-                  HorizontalAlignment="Center" VerticalAlignment="Top"
-                  Width="700"
+                  HorizontalAlignment="Left" VerticalAlignment="Top"
                   ItemsSource="{Binding AvailablePorts}"
                   SelectedItem="{Binding SelectedPort}"/>
         </StackPanel>
