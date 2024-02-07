@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using WPF_App_For_Shop.Commands;
-using WPF_App_For_Shop.Model;
+using WPF_App_For_Shop.Service;
 
 public class SettingsViewModel : INotifyPropertyChanged
 {
@@ -45,7 +45,7 @@ public class SettingsViewModel : INotifyPropertyChanged
         {
             if (availablePorts == null)
             {
-                availablePorts = SerialPortModel.Instance.GetAllSerialPorts();
+                availablePorts = SerialPortService.Instance.GetAllSerialPorts();
             }
             return availablePorts;
         }

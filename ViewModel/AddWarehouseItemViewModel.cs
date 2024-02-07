@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using WPF_App_For_Shop.Commands;
 using WPF_App_For_Shop.Model;
+using WPF_App_For_Shop.Service;
 
 namespace WPF_App_For_Shop.ViewModel;
 
@@ -64,7 +65,7 @@ public class AddWarehouseItemViewModel : INotifyPropertyChanged
         _apiService = new ApiService();
         AddProductCommand = new RelayCommand(AddProductToWh);
 
-        SerialPortModel.Instance.DataReceived += OnDataReceived;
+        SerialPortService.Instance.DataReceived += OnDataReceived;
     }
 
     private void OnDataReceived(string data)
@@ -97,6 +98,6 @@ public class AddWarehouseItemViewModel : INotifyPropertyChanged
 
     ~AddWarehouseItemViewModel()
     {
-        SerialPortModel.Instance.DataReceived -= OnDataReceived;
+        SerialPortService.Instance.DataReceived -= OnDataReceived;
     }
 }

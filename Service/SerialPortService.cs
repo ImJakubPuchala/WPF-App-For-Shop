@@ -2,26 +2,26 @@
 using System.IO.Ports;
 using System.Windows;
 
-namespace WPF_App_For_Shop.Model;
+namespace WPF_App_For_Shop.Service;
 
-public class SerialPortModel
+public class SerialPortService
 {
-    private static SerialPortModel _instance;
+    private static SerialPortService _instance;
     private SerialPort serialPort;
     public event Action<string> DataReceived;
 
-    private SerialPortModel(string portName)
+    private SerialPortService(string portName)
     {
         InitializeSerialPort(portName);
     }
 
-    public static SerialPortModel Instance
+    public static SerialPortService Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = new SerialPortModel("COM1");
+                _instance = new SerialPortService("COM1");
             }
             return _instance;
         }

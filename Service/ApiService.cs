@@ -8,6 +8,7 @@ namespace WPF_App_For_Shop;
 public class ApiService
 {
     private HttpClient _client;
+    private readonly string _apiUrl = "https://localhost:7204";
 
     public ApiService()
     {
@@ -16,7 +17,7 @@ public class ApiService
 
     public async Task<IEnumerable<ProductInformation>> GetAllProductsAsync()
     {
-        string apiUrl = $"https://localhost:7204/Price/GetAllProducts";
+        string apiUrl = $"{_apiUrl}/Price/GetAllProducts";
         try
         {
             var response = await _client.GetAsync(apiUrl);
@@ -39,7 +40,7 @@ public class ApiService
 
     public async Task AddProductAsync(ProductInformation product)
     {
-        string apiUrl = "https://localhost:7204/Price/AddProduct";
+        string apiUrl = $"{_apiUrl}/Price/AddProduct";
         try
         {
             var json = JsonConvert.SerializeObject(product);
@@ -66,7 +67,7 @@ public class ApiService
     {
         try
         {
-            string apiUrl = "https://localhost:7204/Price/ChangeProductPrice";
+            string apiUrl = $"{_apiUrl}/Price/ChangeProductPrice";
             var json = JsonConvert.SerializeObject(productNewPrice);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -89,7 +90,7 @@ public class ApiService
 
     public async Task<ProductStatistics> GetProductStatisticsByEANAsync(string EAN)
     {
-        string apiUrl = $"https://localhost:7204/ProductStatistics/{EAN}";
+        string apiUrl = $"{_apiUrl}/ProductStatistics/{EAN}";
         try
         {
             var response = await _client.GetAsync(apiUrl);
@@ -114,7 +115,7 @@ public class ApiService
     {
         try
         {
-            string apiUrl = "https://localhost:7204/Warehouse/AddWarehouseItem";
+            string apiUrl = $"{_apiUrl}/Warehouse/AddWarehouseItem";
             var json = JsonConvert.SerializeObject(warehouseDto);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -136,7 +137,7 @@ public class ApiService
     }
     public async Task<IEnumerable<WarehouseProduct>> GetAllWarehouseProductsAsync()
     {
-        string apiUrl = $"https://localhost:7204/Warehouse/GetAllWarehouseItems";
+        string apiUrl = $"{_apiUrl}/Warehouse/GetAllWarehouseItems";
         try
         {
             var response = await _client.GetAsync(apiUrl);
@@ -158,7 +159,7 @@ public class ApiService
     }
     public async Task<bool> UpdateWarehouseNumberAsync(int warehouseId, string newWarehouseNumber)
     {
-        var apiUrl = $"https://localhost:7204/Warehouse/UpdateWarehouseNumber/{warehouseId}";
+        var apiUrl = $"{_apiUrl}/Warehouse/UpdateWarehouseNumber/{warehouseId}";
         try
         {
             var updateObject = new

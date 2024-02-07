@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using WPF_App_For_Shop.Commands;
-using WPF_App_For_Shop.Model;
+using WPF_App_For_Shop.Service;
 
 namespace WPF_App_For_Shop.ViewModel;
 
@@ -70,7 +70,7 @@ public class ProductStatisticsViewModel : INotifyPropertyChanged
         _apiService = new ApiService();
         FindProductCommand = new RelayCommand(FindProduct);
 
-        SerialPortModel.Instance.DataReceived += OnDataReceived;
+        SerialPortService.Instance.DataReceived += OnDataReceived;
     }
 
     private void OnDataReceived(string data)
